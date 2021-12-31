@@ -56,3 +56,82 @@ levi is great
 
 문자열 연산하기: 
 더해서 연결하기, 문자열곱하기
+
+문자열 인덱싱: 가리킨다는 의미
+a[번호]는 문자열 안의 특정한 값을 뽑아냄 -> 인덱싱
+a[-1]은 문자열을 뒤에서부터 인덱싱. 즉 , 뒤에서 첫번째.
+a[-0]이 아닌 이유는 -0과 0이 같음 
+
+문자열 슬라이싱: 문자열에서 단순히 한 문자가 아니라 여러 문자를 뽑아내기
+a[0:4] = 0에서 3까지의 문자를 뽑아냄 즉, [0<= a < 4] 이런 의미
+a[0:], a[:17], a[:], a[19:-7]
+ex) pithon을 python으로 바꾸기
+>>> a='pithon'
+>>> a[:1]
+'p'
+>>> a[2:]
+'thon'
+>>> a[:1]+'y'+a[2:]
+'python'
+>>>
+
+문자열포매팅: 문자열안에 어떤 값을 삽입
+1. 바로 대입: 
+>>> "I eat %s apples" %"five"
+'I eat five apples'
+2. 변수 대입:
+>>> "I eat %d apples" % number
+'I eat 3 apples'
+3. 두 개 이상의 값 넣기
+"I eat %d apples. Today is %s." %(number,day)
+'I eat 3 apples. Today is three.
+
+문자열 포맷 코드: 모르는 것만- %o(8진수), %x-16진수, %%-%그자체
+재밌는 %s: 자동으로 문자열로 바꿈
+>>> "My levi %s" %12.24
+'My levi 12.24'
+>>> "My levi %s" %"Love"
+'My levi Love'
+
+포맷코드와 숫자 함께 사용하기:
+1. 정렬과 공백(문자열길이는 10, 대입되는 값을 오른쪽으로 정렬, 나머지는 공백)
+>>> "%10s" %"hi"
+'        hi'
+>>> "%-10sjain."%'hi'
+'hi        jain.'
+2. 소수점 표현하기
+>>> "%0.4f"%3.423456433
+'3.4235'
+>>> '%10.4f'%3.4555432 (응용)
+'    3.4555'
+
+format함수를 이용한 포매팅
+1. 숫자 바로 대입
+>>> "I eat {0} apples.".format(3)
+'I eat 3 apples.'
+0이 3으로 바뀜
+2. 문자열 바로 대입
+>>> "I eat {0} apples.".format("five")
+'I eat five apples.'
+3. 등
+>>> "I ate {0} apples. My name is {name}".format(10, name="levi")
+'I ate 10 apples. My name is levi'
+4. 정렬
+>>> "{0:<10}".format("hi")
+'hi        '
+>>> "{0:>10}".format("hi")
+'        hi'
+>>> "{0:^10}".format("hi")
+'    hi    '(가운데 :^)
+
+공백채우기:
+>>> "{0:=^10}".format("hi")
+'====hi===='
+
+>>> "{0:0.4f}".format(y)
+'3.4547'
+>>> "{0:10.4f}".format(y)
+'    3.4547'
+
+>>> "{{ and }}".format()
+'{ and }'

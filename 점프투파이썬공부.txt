@@ -135,3 +135,14 @@ format함수를 이용한 포매팅
 
 >>> "{{ and }}".format()
 '{ and }'
+
+f 문자열 포매팅
+>>> name='levi'
+>>> age=30
+>>> f'나의 이름은 {name}, 나이는 {age}.'
+'나의 이름은 levi, 나이는 30.'
+>>> f'나는 내년이면 {age+1}살이다'
+'나는 내년이면 31살이다'
+d={'name':'levi', 'age':31}
+>>> f'my name is {d["name"]}. my age is {d["age"]}.'
+'my name is levi. my age is 31.' 

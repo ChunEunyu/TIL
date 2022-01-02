@@ -23,6 +23,7 @@ def는 함수를 만들 때 사용하는 예약어
 주석은 한줄-#, 여러줄-"""
 --------------------------------------------------------------------------------------------
 <2장>
+[2-1]
 -기초 자료형
 숫자형: 정수, 실수, 8진수, 16진수
 4.24E10 = 4.24*10^10
@@ -37,6 +38,7 @@ def는 함수를 만들 때 사용하는 예약어
 7%4=3(나머지)
 7//4=1 (몫:정수)
 
+[2-2]
 문자열(String): 쓰는법은 3가지. ' ', " ", """ """, ''' '''
 문자열 만드는 방법이 다양한 이유는? 
 1. 문자열안에 작은 따옴표가 있는 경우는 ex) "Eunyu's" 큰따옴표 사용
@@ -146,3 +148,242 @@ f 문자열 포매팅
 d={'name':'levi', 'age':31}
 >>> f'my name is {d["name"]}. my age is {d["age"]}.'
 'my name is levi. my age is 31.' 
+
+정렬
+>>> f'{"hi":<10}'
+'hi        '
+>>> f'{"hi":>10}'
+'        hi'
+>>> f'{"hi":^10}'
+'    hi    '
+공백채우기
+>>> f'{"hi":=^10}'
+'====hi===='
+>>> f'{"hi":!^10}'
+'!!!!hi!!!!'
+소수점
+>>> y=3.455637336
+>>> f'{y:0.4f}'
+'3.4556'
+>>> f'{y:10.4f}'
+'    3.4556'
+{end} 표현
+>>> f'{{end}}'
+'{end}'
+
+문자열 관련 함수들:
+-문자열 중 특정 알파벳의 개수
+>>> a="hobby"
+>>> a.count('b')
+2
+-위치 알려주기
+>>> a="python is the best choice"
+>>> a.find('b')
+14
+>>> a.find('k') -없는 문자는 -1
+-1
+
+-위치2: 문자열 중 문자가 처음 나온 위치
+>>> a="Life is too short"
+>>> a.index('t')
+8
+>>> a.index('k')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: substring not found
+
+-join
+>>> ",".join('abcd')
+'a,b,c,d'
+>>> ",".join(['a','b','c','d'])
+'a,b,c,d'
+
+-upper & lower
+>>> a="hi"
+>>> a.upper()
+'HI'
+>>> a="HI"
+>>> a.lower()
+'hi'
+
+-공백 지우기(왼, 오, 양옆)
+>>> a=' hi '
+>>> a.lstrip()
+'hi '
+>>> a.rstrip()
+' hi'
+>>> a.strip()
+'hi'
+
+-replace
+>>> a="Life is too short"
+>>> a.replace("Life", "your leg")
+'your leg is too short'
+
+-split
+>>> a="Life is too short"
+>>> a.split()
+['Life', 'is', 'too', 'short'] <-list type
+
+>>> b='a:b:c:d'
+>>> b.split(':')
+['a', 'b', 'c', 'd'] <-list type
+
+[2-3] list type
+
+a = [] =list() 비어있음 둘다 사용가능
+
+-indexing
+'2중 리스트에서 'a' 뽑아내기'
+>>> a=[1,2,3,['a','b','c']]
+>>> a[-1]
+['a', 'b', 'c']
+>>> a[-1][0]
+'a'
+
+'3중 리스트에서 'Life' 뽑아내기'
+>>> a=[1,2,['a','b',['Life','is']]]
+>>> a[-1][2][0]
+'Life'
+
+-slicing
+'list vs string'
+>>> a=[1,2,3,4,5]
+>>> a[0:2]
+[1, 2]
+>>> a='12345'
+>>> a[0:2]
+'12'
+
+
+>>> a=[1,2,3,4,5]
+>>> b=a[:2]
+>>> c=a[2:]
+>>> b
+[1, 2]
+>>> c
+[3, 4, 5]
+
+'리스트가 중첩된 리스트에서 슬라이싱하기'
+>>> a=[1,2,3,['a','b', 'c'],4,5]
+>>> a[2:5]
+[3, ['a', 'b', 'c'], 4]
+>>> a[3][:2]
+['a', 'b']
+>>>
+
+-calculation
+>>> a=[1,2,3]
+>>> b=[4,5,6]
+>>> a+b
+[1, 2, 3, 4, 5, 6] <-2개의 리스트를 한 개의 리스트로 합친다.
+
+>>> a*3
+[1, 2, 3, 1, 2, 3, 1, 2, 3]
+
+>>> len(a) <-길이 구하기
+3
+
+**>>> a[2]+"hi"** 
+->에러
+->이유: 
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+->해결: 
+a를 문자열로 만들면 가능
+방법1.
+>>> a=[1,2,3]
+>>> str(a[2])+"hi"
+'3hi'
+방법2.
+>>>a='123' 
+>>> a[2]+"hi"
+'3hi'
+
+
+-modifying and deleting
+
+>>> a=[1,2,3]
+>>> a[2]=4
+>>> a
+[1, 2, 4]
+
+del 객체
+>>> a=[1,2,3,4,5]
+>>> del a[2:]
+>>> a
+[1, 2]
+
+-function related with LIST
+(append, sort, reverse, insert, remove, pop, count, extend) 
+>>> a=[1,2,3]
+>>> a.append(4)
+>>> a
+[1, 2, 3, 4]
+>>> a.append([5,6])
+>>> a
+[1, 2, 3, 4, [5, 6]] <-어떠한 자료형도 추가 가능
+
+>>> a=[1,4,3,2]
+>>> a.sort()
+>>> a
+[1, 2, 3, 4]
+>>> a=['a','c','b']
+>>> a.sort()
+>>> a
+['a', 'b', 'c']
+
+>>> a=['a','c','b']
+>>> a.reverse()
+>>> a
+['b', 'c', 'a']
+>>> a.index('a')
+2
+>>> a=[1,2,3]
+>>> a.index(0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: 0 is not in list 
+<-리스트에 있는 값의 인덱스 위치를 알려주는 것. 
+0은 a 리스트에 존재하지 않는 값
+
+>>> a=[1,2,3]
+>>> a.insert(0,4)
+>>> a
+[4, 1, 2, 3]
+>>> a.insert(3,5)
+>>> a
+[4, 1, 2, 5, 3]
+
+첫번째로 나오는 해당 값을 삭제 
+>>> a=[1,2,3,1,2,3]
+>>> a.remove(3)
+>>> a
+[1, 2, 1, 2, 3]
+
+pop은 리스트의 맨 마지막 요소를 끄집어내고, 삭제한다.
+>>> a=[1,2,3]
+>>> a.pop()
+3
+>>> a
+[1, 2]
+
+a.pop(1)
+이런식으로 1 인덱스의 값을 끄집어내고 삭제할 수도 있다.
+
+1이 몇 개 나오는지 
+>>> a=[1,2,3,1]
+>>> a.count(1)
+2
+
+a.extends(b) == a+=b
+>>> a=[1,2,3]
+>>> a.extend([4,5])
+>>> a
+[1, 2, 3, 4, 5]
+>>> b=[6,7]
+>>> a.extend(b)
+>>> a
+[1, 2, 3, 4, 5, 6, 7]
+
+
+[2-4] tuple type

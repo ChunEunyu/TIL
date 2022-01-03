@@ -1,0 +1,107 @@
+<3장 if, while, for 제어문>
+ 
+[3-1] if문
+
+*들여쓰기(indentation)
+공백 vs 탭
+-->요즘 파이썬 커뮤니티에서는 공백 4개 사용하는 걸 권장
+
+*조건문: 참과 거짓을 판단하는 문장
+if money:
+
+-비교연산자
+(<, >, ==, !=, >=, <=)
+
+-and, or, not
+"돈이 3000원 이상 있거나 카드가 있다면 택시를 타고 그렇지 않으면 걸어 가라."
+>>> money=2000
+>>> card=True
+>>> if money>=3000 or card:
+...     print("taxi")
+... else:
+...     print("on foot")
+...
+taxi
+
+-x in s, x not in s
+s = 리스트, 튜플, 문자열
+
+>>> 1 in [1,2,3]
+True
+>>> 1 not in [1,2,3]
+False
+>>> 'a' in ('a','b','c')
+True
+>>> 'j' not in 'python'
+True
+
+"만약 주머니에 돈이 있으면 택시를 타고, 없으면 걸어 가라."
+>>> pocket = ['paper','cellphone','money']
+>>> if 'money' in pocket:
+...     print("taxi")
+... else:
+...     print("on foot")
+...
+taxi
+
+**조건문에서 아무 일도 일어나지 않게 설정하고 싶다면: pass
+>>> if 'money' in pocket:
+...     pass
+... else:
+...     print("show yout card")
+...
+>>>
+
+-elif
+"주머니에 돈이 있으면 택시를 타고, 주머니에 돈은 없지만 카드가 있으면 택시를 타고, 
+돈도 없고 카드도 없으면 걸어 가라."
+>>> pocket=['paper','cellphone']
+>>> card=True
+>>> if 'money' in pocket:
+...     print("taxi")
+... elif card:
+...     print("taxi")
+... else:
+...     print("on foot")
+...
+taxi
+
+**간략한 코드 만들기
+>>> if 'money' in pocket: pass
+... else: print("show your card")
+
+-조건부 표현식
+조건문이 참인 경우 if 조건문 else 조건문이 거짓인 경우
+>>> message="success" if score>=60 else "fail"
+메세지는 "성공"이 된다. 만약 점수가 60점이 넘으면.
+아니면 메세지는 "실패"다.
+
+******card=True 카드가 있다로 해석******
+
+
+[3-2] while문
+
+"열 번 찍어 안 넘어가는 나무 없다" 프로그램
+>>> while treeHit<10:
+...     treeHit = treeHit +1
+...     print("나무를 %d번 찍었습니다."%treeHit)
+...     if treeHit ==10:
+...             print("나무 넘어갑니다.")
+...
+나무를 1번 찍었습니다.
+나무를 2번 찍었습니다.
+나무를 3번 찍었습니다.
+나무를 4번 찍었습니다.
+나무를 5번 찍었습니다.
+나무를 6번 찍었습니다.
+나무를 7번 찍었습니다.
+나무를 8번 찍었습니다.
+나무를 9번 찍었습니다.
+나무를 10번 찍었습니다.
+나무 넘어갑니다.
+
+# 10번이 되고 반복문을 실행하려고 할 때.. 
+treeHit<10이기 때문에 거짓이 된다.
+프로그램 종료됨. 
+
+

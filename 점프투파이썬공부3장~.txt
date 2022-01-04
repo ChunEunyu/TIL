@@ -223,3 +223,60 @@ range(0, 10)
 >>> print(add)
 55
 
+# 60점 이상이면 합격
+marks=[90,25,67,45,80]
+for number in range(len(marks)):
+    if marks[number] <60:
+        continue
+    else:
+        print("%d번 학생 축하합니다. 합격입니다."%(number+1))
+
+# 구구단
+end 매개변수를 통해 해당 결과값을 바로 출력
+print(' ')를 통해 한 단이 끝나면 다음줄로 넘어가서 출력하도록 함
+
+>>> for i in range(2,10):
+...     for j in range(1,10):
+...             print(i*j, end=" ")
+...     print(' ')
+...
+2 4 6 8 10 12 14 16 18
+3 6 9 12 15 18 21 24 27
+4 8 12 16 20 24 28 32 36
+5 10 15 20 25 30 35 40 45
+6 12 18 24 30 36 42 48 54
+7 14 21 28 35 42 49 56 63
+8 16 24 32 40 48 56 64 72
+9 18 27 36 45 54 63 72 81
+
+
+# 리스트를 포함한 for 문
+
+** 반복문을 통해 빈 리스트에 값을 추가. 
+>>> a=[1,2,3,4]
+>>> result=[]
+>>> for num in a:
+...     result.append(num*3)
+...
+>>> print(result)
+[3, 6, 9, 12]
+
+**간단한 방법
+>>> a=[1,2,3,4]
+>>> result= [num *3 for num in a]
+>>> print(result)
+[3, 6, 9, 12]
+
+** 리스트 안에 for 반복문과 if문 사용
+[표현식 for 항목 in 반복가능객체 if 조건문]
+
+>>> a=[1,2,3,4]
+>>> result=[]
+>>> result=[num *3 for num in a if num % 2 ==0]
+>>> print(result)
+[6, 12]
+
+**복잡하지만 for문을 두 개 이상 사용하기
+>>> result=[x*y for x in range(2, 10)
+...                     for y in range(1, 10)]
+>>> print(result)

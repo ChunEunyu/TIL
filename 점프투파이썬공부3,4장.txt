@@ -376,22 +376,3 @@ hi
 >>> result=add_many(1,2,3,4,5,6,6,77,8)
 >>> print(result)
 112
-
-**응용
->>> def add_mul(choice, *args):
-...     if choice =="add":
-...             result=0
-...             for i in args:
-...                     result+=i
-...     elif choice=="mul":
-...             result=1
-...             for i in args:
-...                     result*=i
-...     return result
-...
->>> result=add_mul('add', 1,23,4,4,5,5)
->>> print(result)
-42
->>> result=add_mul('mul', 1,23,4,4,5,5)
->>> print(result)
-9200

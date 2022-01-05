@@ -7,6 +7,17 @@ def is_odd(a):
     else:
         print("%d는 짝수입니다." %a)
 
+---------------------------
+1. bool 형태로 출력하기
+def is_odd(a):
+    if a%2==1:
+        return True
+    else:
+        return False
+
+2. 람다로 간단하게 만들기
+is_odd = lambda x : True if x %2== 1 else False
+
 
 Q2.
 def avg(*args):
@@ -16,12 +27,16 @@ def avg(*args):
     return sum/len(args)
 
 
+
 Q3.
 input1 = input("첫번째 숫자를 입력하세요:")
 input2 = input("두번째 숫자를 입력하세요:")
 
 total = int(input1) + int(input2)
 print("두 수의 합은 %s 입니다" % total)
+
+----------------------
+입력은 항상 문자열이므로, 숫자로 바꾸어야 한다.
 
 Q4.
 3번: 콤마를 사용하면 출력할때 띄어쓰기가 된다.
@@ -36,6 +51,17 @@ data=f2.read()
 print(data)
 f2.close()
 
+-----------------
+파일을 닫지 않은 상태에서 파일을 열면 파일에 저장한 데이터를 읽을 수 없다.
+열린 파일 객체를 닫은 후 파일을 다시 열어야한다.
+
+-------------
+with open("c:/doit/test.txt", 'w') as f1:
+    f1.write("Life is too short")
+with open("c:/doit/test.txt", 'r') as f2:
+    print(f2.read())
+
+
 Q6.
 f1 = open("c:/doit/test.txt", 'w')
 f1.write("Life is too short")
@@ -44,6 +70,17 @@ f1.close()
 f2 = open("c:/doit/test.txt", 'a')
 f2.write(", you need python")
 f2.close()
+
+---------------------
+
+user_input = input("저장할 내용을 입력하시오: ")
+f1 = open("c:/doit/test.txt", 'a')
+f1.write(user_input)
+f1.write("\n")
+f1.close()
+
+
+
 
 Q7.
 f1 = open("c:/doit/test.txt", 'w')
@@ -59,3 +96,10 @@ f2.close()
 f3=open("c:/doit/test.txt", 'w')
 f3.write(data)
 f3.close()
+
+----
+채점 완료!
+
+배운점: 
+1.파일을 사용하면 꼭 닫아주자!
+2. 함수 부분 한 번 더 복습하자! 

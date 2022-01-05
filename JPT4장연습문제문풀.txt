@@ -1,0 +1,61 @@
+JPT4장연습문제문풀
+
+Q1.
+def is_odd(a):
+    if a%2==0:
+        print("%d는 짝수입니다." %a) 
+    else:
+        print("%d는 짝수입니다." %a)
+
+
+Q2.
+def avg(*args):
+    sum = 0 
+    for i in args:
+        sum += i
+    return sum/len(args)
+
+
+Q3.
+input1 = input("첫번째 숫자를 입력하세요:")
+input2 = input("두번째 숫자를 입력하세요:")
+
+total = int(input1) + int(input2)
+print("두 수의 합은 %s 입니다" % total)
+
+Q4.
+3번: 콤마를 사용하면 출력할때 띄어쓰기가 된다.
+
+Q5.
+f1 = open("c:/doit/test.txt", 'w')
+f1.write("Life is too short")
+f1.close()
+
+f2 = open("c:/doit/test.txt", 'r')
+data=f2.read()
+print(data)
+f2.close()
+
+Q6.
+f1 = open("c:/doit/test.txt", 'w')
+f1.write("Life is too short")
+f1.close()
+
+f2 = open("c:/doit/test.txt", 'a')
+f2.write(", you need python")
+f2.close()
+
+Q7.
+f1 = open("c:/doit/test.txt", 'w')
+f1.write("Life is too short\n")
+f1.write("you need java")
+f1.close()
+
+f2 = open("c:/doit/test.txt", 'r')
+data=f2.read()
+data=data.replace("java","python")
+f2.close()
+
+f3=open("c:/doit/test.txt", 'w')
+f3.write(data)
+f3.close()

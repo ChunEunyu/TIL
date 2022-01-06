@@ -1,0 +1,93 @@
+점프투파이썬공부5장
+
+[5-1] 클래스
+
+-클래스는 왜 필요한가?
+
+# 계산기가 두 대 필요한 프로그램: 각각의 계산기에 서로 다른 내용이 저장되어야함.
+같은 내용의 함수와 전역변수가 여러 개 필요 -> 코드가 길어진다.
+
+# 클래스를 사용하기
+각각의 객체는 서로 독립적인 값을 유지한다.
+계산기 대 수가 늘어나도 객체만 생성하면 됨. -> 간편해짐 
+
+
+-클래스와 객체
+
+클래스 - 똑같은 무엇인가를 계속해서 만들어낼 수 있는 틀.
+객체 - 클래스로 만든 피조물. 하지만 객체마다 고유한 성격을 가진다. 독립적이다.
+
+# ex 쿠키 클래스와 a, b 객체
+>>> class Cookie:
+...     pass
+...
+>>>a=Cookie()
+>>> b=Cookie()
+
+**객체와 인스턴스 차이
+'a는 Cookie의 인스턴스' 'a는 객체'
+인스턴스-클래스와 객체 사이의 관계를 나타낼 때
+객체-독립된 a를 말할 때.
+
+
+
+-사칙연산 클래스 만들기
+
+
+1. 클래스 구조 만들기
+
+# type 함수는 객체 타입을 출력한다.
+>>> class Fourcal:
+...     pass
+...
+>>> a=Fourcal()
+>>> type(a)
+<class '__main__.Fourcal'>
+
+
+2. 객체에 숫자 지정할 수 있게 만들기
+
+>>> class Fourcal:
+...     def setdata(self, first, second):
+...             self.first = first
+...             self.second = second
+
+클래스 안에 구현한 함수: 메서드
+객체를 통해 클래스의 메서드 호출하기: a.setdata(3,4)
+(self, first, second)에서 self의 의미: a객체 자신 
+
+**또 다른 메서드 호출법
+#클래스를 통해 메서드 호출
+>>> a = FourCal()
+>>> FourCal.setdata(a, 4, 2) # 반드시 a를 써야함.
+# 일반적으로는 a.setdata(3,4)
+
+
+
+# setdata() 수행문
+
+self.first = 4
+self.second = 2
+
+a.first = 4 # a객체에 객체변수 first가 생성되고 값 4가 저장된다.
+a.second = 2
+
+
+-더하기 기능 만들기
+>>> class Fourcal:
+...     def setdata(self, first, second):
+...             self.first = first
+...             self.second = second
+...     def add(self):
+...             result = self.first+self.second
+...             return result
+...
+>>> a=Fourcal()
+>>> a.setdata(4,2)
+>>> print(a.add())
+
+#a.add() - > add메서드가 수행되면 self에는 자동으로 객체 a가 입력된다.
+
+
+-생성자(Constructor)
+

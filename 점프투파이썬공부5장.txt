@@ -282,3 +282,67 @@ print(result)
 
 
 -패키지 만들기
+#import 뒤에 적힌 경로를 모두 거친 후 함수에 도달할 수 있다.
+#from을 적으면 from 뒤에 있는 경로는 생략 가능
+
+1. echo 모듈을 import -> echo.py 파일
+>>> import game.sound.echo
+>>> game.sound.echo.echo_test()
+echo
+
+2. echo 모듈이 있는 디렉터리까지 import
+>>> from game.sound import echo
+>>> echo.echo_test()
+echo
+
+3. echo 모듈의 echo_test 함수를 직접 import
+>>> from game.sound.echo import echo_test
+>>> echo_test()
+echo
+
+**불가능
+
+import game
+이렇게 지정하면 game 디렉터리의 __init__.py에 정의한 것만 참조가능.
+
+import game.sound.echo.echo_test
+도트 연산자(.)를 사용할 때 가장 마지막 항목은 반드시 모듈 또는 패키지여야 한다.
+
+
+-__init__.py의 용도
+__init__.py 파일은 해당 디렉터리가 패키지의 일부임을 알려준다.
+즉, 폴더 안에 이 파일이 있어야 패키지로 인식된다.
+
+#이런 코드가 실행되려면 sound 폴더에 __init__.py 파일이 있어야함.
+>>> from game.sound import * #from game.sound <- sound가 모듈이어야 함
+>>> echo.echo_test()
+echo
+
+
+-relative 패키지
+
+1. # render.py
+from game.sound.echo import echo_test
+def render_test():
+    print("render")
+    echo_test()
+
+2.
+# render.py
+from ..sound.echo import echo_test #..은 부모 디렉터리를 의미
+
+def render_test():
+    print("render")
+    echo_test()
+
+#.은 현재 디렉터리를 의미
+
+#cmd 실행
+>>> from game.graphic.render import render_test
+>>> render_test()
+render
+echo
+
+
+
+[5-4] 예외처리

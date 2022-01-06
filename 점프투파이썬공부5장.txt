@@ -217,5 +217,68 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 
 
--if __name__ == "__main__": 의 의미
+- if __name__ == "__main__": 의 의미
 
+파이썬의 __name__ 변수.
+직접 mod1.py 파일을 실행할 때: __name__ 변수에는 __main__이 저장됨.
+파이썬 셸이나 다른 파이썬 모듈에서 mod1을 import 하면 
+__name__ 변수에는 mod1이 저장됨.
+>>> import mod1
+>>> mod1.__name__
+'mod1'
+
+
+def add(a, b): 
+    return a+b
+
+def sub(a, b): 
+    return a-b
+
+if __name__ == "__main__": 
+    print(add(1, 4))
+    print(sub(4, 2))
+
+
+-클래스나 변수 등을 포함한 모듈
+
+#mod2.py
+PI = 3.141592 #변수 포함 
+
+class Math: #클래스 포함
+    def solv(self, r):
+        return PI * (r ** 2)
+
+def add(a,b): #함수 포함
+    return a+b
+
+#cmd
+>>> import mod2 
+>>> print(mod2.PI) #모듈의 변수값을 사용
+3.141592
+>>> a = mod2.Math() #모듈의 클래스를 사용
+>>> print(a.solv(2)) # 클래스 내 함수 사용
+12.566368
+>>> print(mod2.add(mod2.PI, 4.4)) #모듈의 함수를 이용.  
+7.5415920000000005 # 모듈의 변수값과 실수를 더한다.
+
+
+-다른 파일에서 모듈 불러오기
+
+동일한 디렉터리에 있는 모듈을 불러와서 사용
+# modest.py
+
+import mod2
+result = mod2.add(3,4)
+print(result)
+
+
+
+
+[5-3] 패키지
+
+패키지는 파이썬 모듈을 계층적으로 관리할 수 있게 한다.
+루트 디렉터리 아래에는 서브디렉터리가 있고,
+.py가 확장자인 파일은 파이썬 모듈이다.
+
+
+-패키지 만들기

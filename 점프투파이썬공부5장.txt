@@ -346,3 +346,131 @@ echo
 
 
 [5-4] 예외처리
+
+-오류는 어떤 때 발생하는 가?
+1. FileNotFoundError 
+2. ZeroDivisionError
+3. IndexError
+
+-오류 예외 처리 기법
+except [발생 오류 [as 오류 메시지 변수]]:
+
+1. try, except
+try: 
+   ...
+except:
+    ...
+
+2.  except문에 미리 정해놓은 오류 이름과 일치할 때만 except 블록을 수행
+try:
+    4 / 0
+except ZeroDivisionError as e:
+    print(e)
+
+
+-try .. finally
+#finally문은 항상 수행
+
+f = open('foo.txt', 'w')
+try:
+    # 무언가를 수행한다.
+finally: #보통 사용한 리소스를 close할 때 사용
+    f.close()
+
+
+-여러 개의 오류 처리
+
+>>> try:
+...     a=[1,2]
+...     print(a[3])
+...     4/0
+... except (ZeroDivisionError, IndexError) as e:
+...     print(e)
+...
+list index out of range 
+
+#먼저 생긴 오류를 출력하고 종료
+
+
+**except문이 수행되지 않는 경우:
+try -> else
+
+>>> try:
+...     age = int(input('나이를 입력하세요: '))
+... except:
+...     print("입력이 정확하지 않습니다.")
+... else:
+...     if age>=18:
+...             print("환영합니다.")
+...     else:
+...             print("미성년자는 출입금지입니다.")
+...
+나이를 입력하세요: 20
+환영합니다.
+
+
+-오류 회피하기
+try:
+    f = open("나없는파일", 'r')
+except FileNotFoundError:
+    pass
+
+
+-오류 일부러 발생시키기
+**raise 명령어 사용**
+
+# 반드시 fly함수를 구현해야 하는 경우
+
+# fly함수를 구현하지 않으면 에러 발생
+class Bird:
+    def fly(self):
+        raise NotImplementedError 
+
+# Bird class를 상속받은 Eagle class.
+class Eagle(Bird):
+    def fly(self): #반드시 fly 함수가 오버라이딩되어야 에러가 안난다.
+	print("very fast")
+
+eagle = Eagle()
+eagle.fly()
+>>> very fast
+
+
+-예외 만들기
+
+1. Exception 클래스를 상속
+
+class MyError(Exception):
+    pass
+
+def say_nick(nick):
+    if nick == '바보':
+	raise MyError()
+    print(nick)
+
+2. try, except
+try: say_nick("천사")
+     say_nick("바보")
+except MyError:
+    print("허용되지 않는 별명입니다.")
+
+3. 오류 메시지 사용
+# __str__ 메서드를 구현해야 except문에서 출력된다.
+
+class MyError(Exception):
+    def __str__(self): 
+        return "허용되지 않는 별명입니다."
+
+try: say_nick("천사")
+     say_nick("바보")
+except MyError as e:
+    print(e)
+
+
+
+[5-5] 내장함수
+
+print. del, type 같은 것들..
+내장함수는 외부 모듈과 달리 import가 필요하지 않다.
+
+abs,all,any,chr,dir,divmod

@@ -1,17 +1,88 @@
 # JPT5장연습문제문풀
-
+2,9,13 미완
 Q1.
+class Calculator:
+    def __init__(self):
+        self.value = 0
 
-Q2.
+    def add(self, val):
+        self.value += val
+
+class UpgradeCalculator(Calculator):
+    def minus(self, val):
+        self.value -= val
+
+cal = UpgradeCalculator()
+cal.add(10)
+cal.minus(7)
+print(cal.value)
+
+Q2. 미완
+class Calculator:
+    def __init__(self):
+        self.value = 0
+        
+    def add(self, val):
+        self.value += val
+
+
+class MaxLimitCalculator(Calculator):
+   pass
+        
+        
+cal = MaxLimitCalculator()
+cal.add(50)
+cal.add(60)
+print(cal.value)
+
 
 Q3.
+하나: False
+둘: True
 
 Q4.
+l1 = [1,-2,3,-5,8,-3]
+print(list(filter(lambda x: x>0, l1)))
 
 Q5.
+a = hex(234)
+print(a)
+b = int(a, 16)
+print(b)
 
 Q6.
+l1=[1,2,3,4]
+print(list(map(lambda x: x*3, l1)))
 
 Q7.
+l1 = [-8, 2, 7, 5, -3, 5, 0, 1]
+minimum = min(l1)
+maximum = max(l1)
+print(minimum+maximum)
 
 Q8.
+a=17/3
+b = round(a, 4)
+print(b)
+
+Q9. 미완
+
+Q10.
+>>> import os
+>>> os.chdir("c:\doit")
+>>> f=os.popen("dir")
+>>> print(f.read())
+
+Q11.
+>>> import glob
+>>> glob.glob("c:\doit\*py")
+
+Q12.
+>>> import time
+>>> time.strftime('%Y/%m/%d %X', time.localtime(time.time()))
+
+Q13. 미완
+import random
+
+for i in range(5):
+    number=random.randint(1,45)

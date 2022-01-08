@@ -1,3 +1,283 @@
 # 점프투파이썬공부6장
 <6장 파이썬 프로그래밍>
 에디터로 작성하는 시간~ 
+
+
+[6-1] 내가 프로그램을 만들 수 있을까?
+
+-프로그램을 만들려면 가장 먼저 "입력"과 "출력"을 생각하라.
+함수 이름은? GuGu로 짓자
+입력받는 값은? 2
+출력하는 값은? 2단(2, 4, 6, 8, …, 18)
+결과는 어떤 형태로 저장하지? 연속된 자료형이니까 리스트!
+
+# 무식한 방법으로 만들어보기...
+def GuGu(n):
+    result = []
+    result.append(n*1)
+    result.append(n*2)
+    result.append(n*3)
+    result.append(n*4)
+    result.append(n*5)
+    result.append(n*6)
+    result.append(n*7)
+    result.append(n*8)
+    result.append(n*9)
+    return result
+
+
+# 간결하게 만들어보기
+print(GuGu(2))
+def GuGu(n):
+    result=[]
+    i=1
+    while i<10: # 반복적인 부분을 while문으로 사용
+        result.append(n*i)
+        i = i+1
+    return result
+
+print(GuGu(2))
+
+
+
+
+[6-2] 3과 5의 배수 합하기
+
+1~1000 사이의 3과 5의 배수 합을 구하기
+!!주의!! 15의 배수가 중복으로 더해지면 안된다.
+
+# 풀이
+result = 0
+for n in range(1, 1000):
+    if n % 3 ==0 or n % 5 ==0: 
+        result += n
+print(result)
+# 15의 배수가 중복으로 더해지지 않도록 or 연산자 사용.
+한 쪽만 해당되면 됨
+
+# 잘못된 풀이
+result = 0
+for n in range(1, 1000):
+    if n % 3 == 0:
+        result += n
+    if n % 5 == 0:
+        result += n
+print(result)
+
+
+
+
+[6-3] 게시판 페이징하기
+
+# 게시물의 총 건수와 한 페이지에 보여 줄 게시물 수: 페이징
+함수 이름은? getTotalPage
+입력 받는 값은? 게시물의 총 건수(m), 한 페이지에 보여줄 게시물 수(n)
+출력하는 값은? 총 페이지수
+
+1. 총페이지수 = (총건수/한페이지당 보여줄 게시물 수) +1
+
+2. 대략적으로 만들어보기
+def getTotalPage(m,n):
+    return m // n +1
+
+print(getTotalPage(5, 10)) # 1 출력
+print(getTotalPage(15, 10)) # 2 출력
+print(getTotalPage(25, 10)) # 3 출력
+print(getTotalPage(30, 10)) # 4 출력
+# !! 마지막에 페이지 수는 4가 아니라 3이 아닌가?
+        
+3. 올바르게 수정
+# (총 게시물 수 / 한 페이지에 보여줄 게시물 수)이 나누어 떨어지는 경우
+ - 몫 자체가 페이지 수 : m // n 
+# (총 게시물 수 / 한 페이지에 보여줄 게시물 수)이 나누어 떨어지지 않는 경우
+ - 기본적으로 m//n을 구하여 몫이 필요+나머지 게시물들이 들어갈 페이지가 하나 더 필요
+
+def getTotalPage(m,n):
+    if m % n == 0:
+        return m // n
+    else: 
+        return m // n +1
+
+print(getTotalPage(5, 10)) # 1 출력
+print(getTotalPage(15, 10)) # 2 출력
+print(getTotalPage(25, 10)) # 3 출력
+print(getTotalPage(30, 10)) # 3 출력
+
+
+[6-4] 간단한 메모장 만들기
+
+# 메모를 파일에 저장, 추가 및 조회가 가능한 메모장
+필요한 기능은? 메모 추가하기, 메모 조회하기
+입력 받는 값은? 메모 내용, 프로그램 실행 옵션
+출력하는 값은? memo.txt
+
+1. 입력으로 받은 옵션과 메모를 출력하는 코드
+
+## memo.py
+import sys
+
+option = sys.argv[1] #옵션값
+memo = sys.argv[2] #메모 내용
+
+print(option)
+print(memo)
+# sys.argv는 입력된 값을 읽어 들일 수 있는 파이썬 라이브러리
+# sys.argv[0]은 memo.py
+
+## cmd 실행
+C:\doit>python memo.py -a "Life is too short"
+-a # 옵션
+Life is too short # 메모
+
+
+2. 입력 받은 메모를 파일에 쓰기
+
+# memo.py
+
+import sys
+
+option = sys.argv[1] #옵션값
+
+if option =='-a': #메모장에 메모를 쓰는 경우
+    memo = sys.argv[2] # 입력값을 읽고
+    f = open("memo.txt", 'a') # 메모를 추가모드로 열기
+    f.write(memo) # 메모장에 쓰기
+    f.close() # 메모장 닫기
+
+# cmd
+C:\doit>python memo.py -a "Life is too short" # 쓰기
+C:\doit>python memo.py -a "You need python" # 쓰기
+C:\doit>type memo.txt # 메모장 확인
+Life is too shortYou need python
+
+
+3. 메모장 내용을 읽어서 출력하기
+
+
+# memo.py
+
+import sys
+
+option = sys.argv[1] #옵션값
+
+if option =='-a':
+    memo = sys.argv[2]
+    f = open("memo.txt", 'a')
+    f.write(memo)
+    f.write('\n')
+    f.close()
+    
+elif option == '-v':
+    f = open("memo.txt", 'r')
+    memo = f.read()
+    f.close()
+    print(memo)
+
+# cmd 
+C:\doit>python memo.py -v
+Life is too shortYou need python
+
+
+
+[6-5] 탭을 4개의 공백으로 바꾸기
+
+# 문서 파일을 읽어서 그 안에 있는 탭을 공백 4개로 바꾸어 주는 스크립트
+필요한 기능은? 문서 파일 읽어 들이기, 문자열 변경하기
+입력 받는 값은? 탭을 포함한 문서 파일
+출력하는 값은? 탭이 공백으로 수정된 문서 파일
+
+1. test 
+# tab04.py
+import sys
+
+src = sys.argv[1] # 수정할 메모장
+dst = sys.argv[2] # 수정한 메모장
+
+print(src)
+print(dst)
+
+# cmd
+C:\doit>python tab04.py a.txt b.txt
+a.txt
+b.txt
+
+
+2. 탭을 공백4개로 바꾸기
+
+# tab04.py
+import sys
+
+src = sys.argv[1]
+dst = sys.argv[2]
+
+f = open(src, 'r') # 읽기모드
+tab_content = f.read() # 메모를 읽어서 저장
+f.close()
+
+space_content = tab_content.replace("\t", " "*4) #메모 안 탭을 공백 4개로 바꾸어 저장
+print(space_content)
+
+# cmd
+C:\doit>python tab04.py a.txt b.txt
+Life    is too short
+You need     python 
+
+
+3. 변경된 내용을 b.txt에 저장
+
+# tab04.py
+
+import sys
+
+src = sys.argv[1]
+dst = sys.argv[2]
+
+f = open(src, 'r')
+tab_content = f.read()
+f.close()
+
+space_content = tab_content.replace("\t", " "*4)
+f = open(dst, 'w')
+f,write(space_content)
+f.close()
+
+# cmd
+C:\doit>python tab04.py a.txt b.txt
+
+
+
+[6-6] 하위 디렉터리 검색하기
+
+특정 디렉터리부터 그 하위 모든 파일 중 .py 파일만 출력해주는 프로그램
+# sub_dir_search.py
+
+import os
+
+def search(dirname):
+    try:
+        filenames = os.listdir(dirname) # 해당 디렉터리에 있는 파일들의 리스트 
+        for filename in filenames: 
+            full_filename = os.path.join(dirname, filename) # 디렉터리와 파일이름을 이어준다.
+            if os.path.isdir(full_filename):
+                search(full_filename)
+            else:
+                ext = os.path.splittext(full_filename)[-1] # 파일이름에서 확장자만 추출
+                if ext == '.py':
+                    print(full_filename)
+    except PermissionError:
+        pass
+
+search("c:\")
+
+'''
+import os
+# os.walk는 시작디렉터리부터 하위 d까지 차례대로 방문
+for (path, dir, files) in os.walk("c:/"): # 해당 경로에서 반복 
+    for filename in files: # 파일 탐색
+        ext = os.path.splitext(filename)[-1] # 파일이름에서 확장자만 추출
+        if ext == '.py': #확장자가 py면
+            print("%s/%s" % (path, filename)) #경로와 파일이름 출력
+'''
+
+
+

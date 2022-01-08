@@ -1,9 +1,12 @@
 # myargv.py
 
 import sys
-print(sys.argv)
-sum=0
-for i in sys.argv:
-    sum += i
-print(sum)
+
+numbers = sys.argv[1:]
+result=0
+
+for number in numbers:
+    result += int(number)
+
+print(result)
     

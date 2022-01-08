@@ -1,5 +1,6 @@
 # JPT5장연습문제문풀
 2,9,13 미완
+
 Q1.
 class Calculator:
     def __init__(self):
@@ -17,7 +18,7 @@ cal.add(10)
 cal.minus(7)
 print(cal.value)
 
-Q2. 미완
+Q2. 오답
 class Calculator:
     def __init__(self):
         self.value = 0
@@ -27,8 +28,14 @@ class Calculator:
 
 
 class MaxLimitCalculator(Calculator):
-   pass
-        
+   def add(self, val):
+	self.value += val
+	if self.value > 100:
+		self.value = 100
+
+# add함수를 오버라이딩해서 self값이 100이 넘는 경우를 if문 처리하면 
+됐을 문제. 
+내가 너무 꼬아서 생각을 했다...
         
 cal = MaxLimitCalculator()
 cal.add(50)
@@ -39,50 +46,108 @@ print(cal.value)
 Q3.
 하나: False
 둘: True
+---------
+하나: abs(-3)으로 절댓값 3이 되지만 3-3이므로 0이된다. 
+all 함수는 모든 수가 참이어야 한다. 0이 하나 있기 때문에 False
+
+둘: ord함수는 캐릭터형을 아스키코드를 바꾼다.
+chr은 아스키코드를 캐릭터형으로 바꾼다. 그러므로 참이다.
 
 Q4.
 l1 = [1,-2,3,-5,8,-3]
 print(list(filter(lambda x: x>0, l1)))
+------------------
+음수를 제거하는 람다 함수를 만들고, 
+filter 함수를 통해 람다함수와 리스트를 두어 필터링한 값을 리스트로 출력한다.  
 
 Q5.
 a = hex(234)
 print(a)
 b = int(a, 16)
 print(b)
+--------
+>>> int('0xea', 16) 
+# 16진수 문자열을 10진수 정수형으로 바꿔주기
+234
 
 Q6.
 l1=[1,2,3,4]
 print(list(map(lambda x: x*3, l1)))
+----------
+map함수는 map(f, iterable) 형태
+리스트 속 요소를 3씩 곱하는 함수를 map함수로 묶은 후 그 결괏값을 리스트로 돌려준다.
 
 Q7.
 l1 = [-8, 2, 7, 5, -3, 5, 0, 1]
 minimum = min(l1)
 maximum = max(l1)
 print(minimum+maximum)
+---------
+min(a)+max(a)
 
 Q8.
 a=17/3
 b = round(a, 4)
 print(b)
+---------
+round(실수, 소수점 밑 자릿수)
 
 Q9. 미완
+------------------
+# myargv.py
+
+import sys
+
+numbers = sys.argv[1:] # 파일 이름을 제외한 명령 행의 모든 입력
+result=0
+
+for number in numbers:
+    result += int(number) #문자열을 정수형으로 바꾸어 더한다.
+
+print(result)
+
 
 Q10.
 >>> import os
->>> os.chdir("c:\doit")
->>> f=os.popen("dir")
->>> print(f.read())
+>>> os.chdir("c:\doit") # chdir을 사용하여 doit 디렉터리로 이동
+>>> f=os.popen("dir") # popen을 사용하여 시스템 명령어인 dir을 수행
+>>> print(f.read()) # popen의 결과를 출력한다
 
 Q11.
 >>> import glob
 >>> glob.glob("c:\doit\*py")
+------------------------
+>>> import glob
+>>> glob.glob("c:\doit\*.py") # .py로 변경
 
 Q12.
 >>> import time
 >>> time.strftime('%Y/%m/%d %X', time.localtime(time.time()))
+--------------------------
+import random
+time.strftime("%Y/%m/%d %H:%M:%S") # 년/월/일 시:분:초
 
 Q13. 미완
 import random
 
 for i in range(5):
-    number=random.randint(1,45)
+    print(random.randint(1,45))
+-------------------------------
+import random
+
+result = []
+for i in range(6):
+    num = random.randint(1,45) # 난수를 생성하여 num 변수에 저장
+    if num not in result: # num 값이 result리스트에 없는 수면
+        result.append(num) # result리스트에 num값을 저장
+print(result)
+
+# not in과 append함수를 사용하기. 
+# num 변수에 임시로 난수를 저장하고, 중복된 수 가 없는 경우에만 result 리스트에 저장.
+
+
+
+
+후기:
+파이썬 익숙하지가 않다 ㅜㅜ
+내장함수를 다양하게 적용해야할 필요가 있다.

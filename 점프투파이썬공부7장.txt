@@ -218,3 +218,90 @@ VERBOSE(X) - verbose 모드를 사용할 수 있도록 한다. (정규식을 보
 
 # DOTALL, S
 
+**일반
+>>> import re
+>>> p = re.compile('a.b')
+>>> m = p.match('a\n') #\n은 .과 매치안됨
+>>> print(m)
+None
+
+**수정 - re.DOTALL은 \n에 상관없이 검색할 때 사용
+>>> p = re.compile('a.b', re.DOTALL)
+>>> m = p.match('a\nb')
+>>> print(m)
+<re.Match object; span=(0, 3), match='a\nb'>
+
+# IGNORECASE, I
+대소문자 구분x
+
+# MULTILINE, M
+
+^는 문자열의 처음, $는 문자열의 마지막.
+^python인 경우 문자열의 처음은 항상 python으로 시작해야 매치되고, 
+만약 정규식이 python$이라면 문자열의 마지막은 항상 python으로 끝나야 매치된다.
+
+^python\s\w+은 python이라는 문자열로 시작하고 그 뒤에 whitespace, 그 뒤에 단어가 와야 한다는 의미
+
+# interprter
+>>> import re
+>>> p = re.compile("^python\s\w+", re.MULTILINE)
+>>> data = """python one
+... life is too short
+... python two
+... you need python
+... python three"""
+>>> print(p.findall(data))
+['python one', 'python two', 'python three']
+# re.M을 사용하면 ^는 각 라인의 처음으로 인식된다.
+즉 re.MULTILINE 옵션은 ^, $ 메타 문자를 문자열의 각 줄마다 적용해 주는 것이다.
+
+
+# VERBOSE, X
+re.VERBOSE 옵션을 사용하면 문자열에 사용된 whitespace는 컴파일할 때 제거된다(단 [ ] 안에 사용한 whitespace는 제외).
+
+charref = re.compile(r'&[#](0[0-7]+|[0-9]+|x[0-9a-fA-F]+);')
+# 주석 사용
+charref = re.compile(r"""
+ &[#]                # Start of a numeric entity reference
+ (
+     0[0-7]+         # Octal form
+   | [0-9]+          # Decimal form
+   | x[0-9a-fA-F]+   # Hexadecimal form
+ )
+ ;                   # Trailing semicolon
+""", re.VERBOSE)
+
+
+-백슬래쉬 문제
+>>> p = re.compile(r'\\section')
+r문자를 삽입하면 이 정규식은 Raw String 규칙에 의해 백슬래시 2개 대신 1개만 써도 됨
+
+
+
+
+[7-3] 강력한 정규 표현식의 세계로
+
+-메타문자
+소비없는 메타문자
+
+# | 메타 문자는 or과 동일한 의미
+# ^ 메타 문자는 문자열의 맨 처음과 일치함
+# $ 메타 문자는 문자열의 끝과 매치함을 의미
+^ 또는 $ 문자를 문자 그 자체로 매치하고 싶으면, \^, \$ 로 사용
+
+# \A는 문자열의 처음과 매치됨
+re.MULTILINE 옵션을 사용할 경우 ^은 각 줄의 문자열의 처음과 매치되지만,
+ \A는 줄과 상관없이 전체 문자열의 처음하고만 매치된다.
+# \Z는 문자열의 끝과 매치됨
+re.MULTILINE 옵션을 사용할 경우 $ 메타 문자와는 달리 전체 문자열의 끝과 매치된다.
+
+# \b는 단어 구분자(Word boundary)
+보통 단어는 whitespace에 의해 구분.
+r'\bclass\b'처럼 Raw string임을 알려주는 기호 r을 반드시 붙여 주어야 한다.
+(\b는 파이썬 리터럴 규칙에 의하면 백스페이스(BackSpace)를 의미)
+
+# \B 메타 문자는 whitespace로 구분된 단어가 아닌 경우에만 매치된다.
+
+
+
+-그루핑(grouping) : ABC 문자열이 계속해서 반복되는지 조사하는 정규식

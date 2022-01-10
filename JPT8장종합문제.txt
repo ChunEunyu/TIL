@@ -1,0 +1,35 @@
+Q1.
+>>> str = "a:b:c:d"
+>>> str=str.split(':')
+>>> str = ''.join(str)
+>>> result='#'.join(str)
+>>> print(result)
+a#b#c#d
+
+Q2.
+a = {'A':90, 'B':80}
+try:
+    a['C']
+except IndexError:
+    pass
+finally:
+    a['C'] = 70
+    print(a)
+
+Q3.
+a =a+[4,5]는 a리스트와 [4,5]리스트를 합치는 것이다. 
+즉, 두 개의 리스트를 하나의 리스트로 합친다.
+a.extend([4,5])는 기존 a리스트에 [4,5]리스트를 추가하는 것이다.
+즉, 기존 리스트에 새로운 요소를 추가하는 것이다.
+
+Q4.
+A = [20, 55, 67, 82, 45, 33, 90, 87, 100, 25]
+A=list(filter(lambda a: a>50, A))
+print("50 이상의 수로 이루어진 리스트:", A)
+
+result = 0
+result = sum(A)
+print("리스트 요소의 합:", result)
+
+Q5.
+

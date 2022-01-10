@@ -31,5 +31,62 @@ result = 0
 result = sum(A)
 print("리스트 요소의 합:", result)
 
-Q5.
+Q5. 미완.
+result =0
+def Fibonacci(n):
+    for i in range(0, ):
+        print("%d, "%i)
+        result = i
+        result += i 
+        print("%d, "%result)
+        if result > n: break
+        
+n = input("정수 n을 입력하시오: ")
+Fibonacci(n)
 
+
+Q6.
+
+Q7.
+n = int(input("구구단을 출력할 숫자를 입력하세요(2~9): "))
+for i in range(1, 10):
+    print((n*i), end=' ')
+
+Q8. 미완
+f = open("abc.txt", 'r')
+content = f.read()
+print(content)
+f.close()
+
+Q9.
+
+
+Q10.
+
+Q11.
+
+Q12.
+5
+이유: "a"+1에서 타입 에러가 발생 하여 result 값은 1이 되,
+finally문을 통해 result값에 4가 더해져 결과적으로 5가 된다.
+
+Q13.
+
+Q14.
+
+Q15.
+
+Q16.
+
+Q17.
+2번.
+'a' + '.이 세개 이상' + b란 뜻이다.
+
+Q18.
+m.start() = 2
+m.end() = 7
+즉, 9
+
+Q19.
+
+Q20.

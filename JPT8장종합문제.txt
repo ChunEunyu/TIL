@@ -230,23 +230,134 @@ f.close()
 
 Q10. 안푼 문제 
 -------------------------------------
+class Calculator:
+    def __init__(self, numberList): #기본 지정
+        self.numberList = numberList # 리스트를 입력 받음
+
+    def sum(self):
+        result=0
+        for num in self.numberList:
+            result += num
+        return result
+
+    def avg(self):
+        total = self.sum() #위 sum 함수를 통해 더한 값을 대입
+        return total/len(self.numberList)
+
+cal1 = Calculator([1,2,3,4,5])
+print(cal1.sum())
+print(cal1.avg())
+
+cal2 = Calculator([6,7,8,9,10])
+print(cal2.sum())
+print(cal2.avg())
+
+
 
 Q11. 안푼 문제 
 -------------------------------------
+1. sys 모듈 사용하기
+>>> import sys
+>>> sys.path.append("c:\doit") # sys.path에 doit 디렉터리 추가
+>>> import mymod # mymod 모듈 사용 가능
+
+2. PYTHONPATH 환경 변수 사용하기
+C:\Users\home>set PYTHONPATH=c:\doit # 디렉토리 지정
+C:\Users\home>python # 파이썬 사용
+>>> import mymod
+
+3. 현재 디렉터리 사용하기
+C:\Users\home>cd c:\doit
+C:\doit>python
+>>> import mymod # 모듈 사용
+
 
 
 Q12.
 5
 이유: "a"+1에서 타입 에러가 발생 하여 result 값은 1이 되,
 finally문을 통해 result값에 4가 더해져 결과적으로 5가 된다.
+----------------------
+
+7
+이유: [1,2,3][3] 문장 수행 시 IndexError 발생
+3+4 = 7
+
+!! [1,2,3][3]이 2차원 배열 이런 건 줄....
 
 Q13.
+data = "4546793"
+numbers = list(map(int, data)) # 숫자 문자열을 숫자 리스트로 변경
+result =[]
 
-Q14.
+for i, num in enumerate(numbers): # i는 인덱스 번호 
+    result.append(str(num)) # 문자열 변환 후 저장 
+    if i < len(numbers)-1:                   # 다음 수가 있다면
+        is_odd = num % 2 == 1                # 현재 수가 홀수
+        is_next_odd = numbers[i+1] % 2 == 1  # 다음 수가 홀수
+        if is_odd and is_next_odd:           # 연속 홀수
+            result.append("-")
+        elif not is_odd and not is_next_odd: # 연속 짝수
+            result.append("*")
 
-Q15.
+print("".join(result)) # 문자열 출력 
 
-Q16.
+!! 연속 홀수면 두 수 사이에 '-'를, 연속 짝수면 두 수 사이에 '*'를.
+1. 홀수 짝수를 알기 위해 숫자 리스트를 만든다.
+2. 숫자가 반복될 때마다 숫자를 문자열로 result 리스트에 대입한다.
+3. 해당 인덱스가 홀수인 경우와 다음 인덱스가 홀수인 경우를 확인한다.
+4. 연속 홀수의 경우: -, 연속 짝수의 경우: *
+
+** and와 and not **
+**enumerate**  
+
+Q14. 안풀음
+------------------------
+def compress_string(s):
+    _c = ""
+    cnt = 0
+    result = ""
+    for c in s:
+        if c!=_c:  
+            _c = c
+            if cnt: result += str(cnt)
+            result += c
+            cnt = 1
+        else:
+            cnt +=1
+    if cnt: result += str(cnt)
+    return result
+
+print(compress_string("aaabbcccccca"))  # a3b2c6a1 출력
+
+!! 보류 
+
+
+Q15.안풀음
+------------------------
+def chkDupNum(s):
+    result = []
+    for num in s: 
+        if num not in result:   # result 리스트에 없는 수
+            result.append(num)  # result 리스트에 추가
+        else:                   # result 리스트에 있는 수
+            return False        # False
+    return len(result) == 10    # result 요소 개수가 10개면 True
+
+print(chkDupNum("0123456789"))      # True 리턴
+print(chkDupNum("01234"))           # False 리턴
+print(chkDupNum("01234567890"))     # False 리턴
+print(chkDupNum("6789012345"))      # True 리턴
+print(chkDupNum("012322456789"))    # False 리턴
+
+!! 중복없는 0~9면 True
+중복 없는 수열이어도 10개의 개수가 아니면 False
+
+
+
+
+Q16.안풀음
+------------------------
 
 Q17.
 2번.

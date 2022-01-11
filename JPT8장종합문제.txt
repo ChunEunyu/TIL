@@ -94,5 +94,19 @@ m.end() = 7
 즉, 9
 
 Q19.
+import re
+
+data = """
+park 010-9999-9988
+kim 010-9909-7789
+lee 010-8789-7768
+"""
+
+p=re.compile(r"\w+\s+\d+[-]\d+[-](?P<number>\d+)")
+m=p.search()
 
 Q20.
+import re
+
+p=re.compile(".*[@].*[.].*$")
+m=p.search()

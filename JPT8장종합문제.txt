@@ -275,7 +275,7 @@ C:\doit>python
 
 Q12.
 5
-이유: "a"+1에서 타입 에러가 발생 하여 result 값은 1이 되,
+이유: "a"+1에서 타입 에러가 발생 하여 result 값은 1이 되어,
 finally문을 통해 result값에 4가 더해져 결과적으로 5가 된다.
 ----------------------
 
@@ -314,23 +314,25 @@ print("".join(result)) # 문자열 출력
 Q14. 안풀음
 ------------------------
 def compress_string(s):
-    _c = ""
-    cnt = 0
-    result = ""
-    for c in s:
-        if c!=_c:  
-            _c = c
-            if cnt: result += str(cnt)
-            result += c
-            cnt = 1
-        else:
-            cnt +=1
-    if cnt: result += str(cnt)
+    _c = "" # 이전 문자를 저장하는 변수 
+    cnt = 0  # 중복 카운트를 저장하는 변수
+    result = "" # 결과 문자열
+
+    for c in s: # 문자열 중복 검사하기 
+        if c!=_c:  # 현재 문자가 이전 문자와 다른 경우
+            _c = c # 현재 문자를 이전 문자 변수에 대입
+            if cnt: result += str(cnt) # 이전 문자 중복 기록 : 중복카운트된 수를 문자형으로 변환하고 result 문자열에 추가
+            result += c # 결과 문자열에 현재 문자를 대입하기
+            cnt = 1 # 현재 문자의 중복 카운트는 1이 된다
+        else: # 현재 문자가 이전 문자와 같은 경우
+            cnt +=1 # 카운트 변수에 1 더하기
+
+    if cnt: result += str(cnt) # 맨 마지막 문자 카운트 출력하기 
     return result
 
 print(compress_string("aaabbcccccca"))  # a3b2c6a1 출력
 
-!! 보류 
+
 
 
 Q15.안풀음

@@ -1,25 +1,34 @@
-6097.
-세로(h), 가로(w)
-막대의 길이(l)
-막대를 놓는 방향(d:가로는 0, 세로는 1)
-막대를 놓는 막대의 가장 왼쪽 또는 위쪽의 위치(x, y)
+6098.
 
+개미는 오른쪽으로 움직이다가 벽을 만나면 아래쪽으로 움직임
+ 0(갈 수 있는 곳), 1(벽 또는 장애물), 먹이가 2
 
-h, w = map(int, input().split())
-board = [ [0] * w for _ in range(h) ]
+맨 아래의 가장 오른쪽에 도착한 경우, 더 이상 움직일 수 없는 경우, 먹이를 찾은 경우에는
+더이상 이동하지 않고 그 곳에 머무른다고 가정한다.
+개미집은 반드시 (2, 2)에 존재하기 때문에 개미는 (2, 2)에서 출발한다.
 
-n = int(input())
-for i in range(n): # 막대길이, 방향, 좌표(x, y)
-    l, d, x, y = map(int, input().split()) 
-    
-        if d == 0: # 가로
-            for j in range(l):
-                board[j][y-1] = 1
-        else: # 세로
-            for j in range(l):
-                board[x-1][j] = 1
+a = [list(map(int, input().split())) for i in range(10)]
+# 오른쪽으로 가기: x, y+1  아래쪽으로 가기: x+1, y
+a[1][1]=9
+i, j = 1, 1
+while True:
+    if a[i][j+1]==0: #오른쪽가기
+        a[i][j+1]=9
+        j+=1
+    elif a[i][j+1]==1 and a[i+1][j]==0: # 아래쪽 가기
+        a[i+1][j]=9
+        i+=1
+    elif a[i][j+1]==2: #오른쪽에 먹이
+        a[i][j+1]=9
+        break
+    elif a[i+1][j]==2: # 아래쪽에 먹이
+        a[i+1][j]=9
+        break
 
-for i in range(0, h):
-    for j in range(0, w):
-        print(board[i][j], end=' ')
-    print() 
+    else: # 끝이면
+        break
+
+for i in range(10):
+    for j in range(10):
+        print(a[i][j], end=' ')
+    print()

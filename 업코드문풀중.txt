@@ -1,15 +1,25 @@
-d=[] # 19 * 19 바둑판
-for i in range(20) :
-  d.append([])         #리스트 안에 다른 리스트 추가해 넣기
-  for j in range(20) : 
-    d[i].append(0)    #리스트 안에 들어있는 리스트 안에 0 추가해 넣기
+6097.
+세로(h), 가로(w)
+막대의 길이(l)
+막대를 놓는 방향(d:가로는 0, 세로는 1)
+막대를 놓는 막대의 가장 왼쪽 또는 위쪽의 위치(x, y)
+
+
+h, w = map(int, input().split())
+board = [ [0] * w for _ in range(h) ]
 
 n = int(input())
-for i in range(n) : # 바둑돌이 올려진 자리는 1로 비뀐다.
-  x, y = input().split()
-  d[int(x)][int(y)] = 1
+for i in range(n): # 막대길이, 방향, 좌표(x, y)
+    l, d, x, y = map(int, input().split()) 
+    
+        if d == 0: # 가로
+            for j in range(l):
+                board[j][y-1] = 1
+        else: # 세로
+            for j in range(l):
+                board[x-1][j] = 1
 
-for i in range(1, 20) : 
-  for j in range(1, 20) : 
-    print(d[i][j], end=' ')    #공백을 두고 한 줄로 출력
-  print()                          #줄 바꿈
+for i in range(0, h):
+    for j in range(0, w):
+        print(board[i][j], end=' ')
+    print() 

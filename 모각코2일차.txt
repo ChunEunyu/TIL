@@ -1,0 +1,40 @@
+[html 속 자바스크립트]
+
+-html 파일에 javascript 코드를 연동하는 방법.
+1. html 파일에 script 태그 사용하기.
+<script>
+	function hello() {
+		console.log('Hello');
+}
+hello();
+</script>
+코드가 간단할 때는 상관없지만 코드가 길어지면 수정하기 힘들고 재사용성도 좋지않음.
+->비추천.
+
+2. script src를 사용해 링크 걸기
+<script src="hello.js"></script>
+외부파일을 사용하기 때문에 추후 코드를 유지보수할 때 유리하다.
+
+-DOM
+html과 자바스크립트를 연결하는 데 필수적인 개념.
+DOM: Document Object Model. 
+텍스트로 작성된 html 파일을 트리형태로 표현한 객체.
+DOM을 통해 자바스크립트와 html 파일이 연결된다.
+document 객체는 돔 크리의 최상단에 있는 객체에 접근하게 해준다.
+예를 들면, 가장 상위 요소엔 document 객체가 있고, 그 하위엔 요소로 <head>, <body>태그가 있다. 헤드 요소 하위엔 또 타이틀이란 요소가 있고, 타이틀이란 요소 하위엔 또 텍스트로 "My Title"이란 제목이 있다. 
+
+-돔에 접근하기.
+돔에 접근하는 코드: document.getElementById('header').innerHTML = "모각코화이팅";
+document라는 객체. Id가 "header"인 태그를 선택하기 위해 getElementId 함수 사용.
+태그 선택 뒤 innerHTML을 "모각코화이팅"으로 교체함.
+
+다른 예시: document.getElementsByTagName('div');
+태그명이 div인 모든 태그를 선택한다.
+
+
+-document 객체의 다양한 메소드.
+document.getElementById(아이디): 해당 아이디의 요소를 선택.
+document.getElementsByTagName(태그이름): 해당 태그 이름의 요소를 선택.
+document.getElementsByClassName(클래스이름): 해당 클래스에 속한 요소를 모두 선택.
+document.getElementByName(name속성값): 해당 name 속성값을 가지는 요소를 모두 선택.
+document.querySelectorAll(선택자): 해당 선택자로 선택되는 요소를 모두 선택.

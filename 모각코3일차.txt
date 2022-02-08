@@ -1,0 +1,50 @@
+[html속 javascript]
+
+-index.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <h1>Hello World</h1>
+</body>
+</html>
+
+-index.js
+var h1 = document.getElementsByTagname('h1')
+h1[0].innerHTML = "모각코화이팅"
+// h1은 배열이 되므로 인덱스를 사용하여 가장 처음에 나오는 "Hello World"에 해당하는
+요소만 선택한뒤, innerHTML을 바꿔줌.
+
+-html 파일에 script 추가
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <h1>Hello World</h1>
+    <script src="./index.js"></script>
+</body>
+</html>
+
+-버튼 사용: html
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <h1>Hello World</h1>
+    <button onclick="changeText()">click me</button>
+    <script src="./index.js"></script>
+</body>
+</html>
+
+-버튼 사용: js
+function changeText(){
+    var h1 = document.getElementsByTagName('h1');
+    h1[0].innerHTML = "모각코 화이팅"
+}
+//함수화하여 버튼을 클릭했을 때 글자가 바뀌도록함.

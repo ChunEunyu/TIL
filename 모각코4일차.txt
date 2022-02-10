@@ -1,0 +1,20 @@
+console: 텍스트문자로 실행 결과를 확인하는 장치. 테스트 진행도 가능. 개발자도구(f12).
+
+1.
+-html file
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <script src="./event.js"></script>
+</body>
+</html>
+
+-js file
+console.log("Hello, World!"); // console의 log를 통해 출력하겠단 뜻
+
+2. 
+연산도 가능
+

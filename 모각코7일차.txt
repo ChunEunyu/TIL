@@ -1,0 +1,48 @@
+[조건문]
+-if-else문
+var x = 10;
+if (x > 10){
+	document.write("x는 10보다 큽니다");
+}else{
+	document.write("x는 10보다 작거나 같습니다");
+}
+
+-switch문
+var x = 1;
+switch(x){
+ case 1;
+	document.write("1");
+	break;
+ case 2;
+	document.write("2");
+	break;
+ case 3;
+	document.write("3");
+	break;
+ default;
+	document.write("default");
+	break;
+}
+
+[반복문]
+-while: 조건문이 참이면 계속 반복. 거짓이면 반복을 빠져나옴.
+var x = 1;
+while(x < 10){
+	x++;
+}
+
+무한반복은 while(true)를 쓰면 됨.
+
+-do/while: 일단 실행문을 먼저 실행한 후, 조건문이 참인지 거짓인지 확인한다.
+do{
+	실행문
+}while(조건문);
+
+-for: 반복횟수와 반복조건을 설정할 수 있는 반복문.
+for(초기식;조건식;증감식){
+	실행문
+}
+
+for(var i = 0 ; i < 10 ; i++){
+ document.write(i);
+}

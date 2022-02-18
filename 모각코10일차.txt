@@ -1,0 +1,24 @@
+[이벤트]
+웹을 살아 숨 쉬게 만드는 요소
+이벤트, 이벤트 생성.
+
+-1단계: 버튼에 해당 함수 연결하기(권장x)
+var n = 0;
+function click_event() {
+  n++;
+  alert(n + "번 클릭하였습니다."); //특정 경고를 보여줌
+}
+
+-2단계(버튼에 id 추가)
+addEventListener 메소드를 통해 HTML과 이벤트를 연결
+function onClick() {
+  alert("첫 번째 이벤트");
+}
+function onClick2() {
+  alert("두 번째 이벤트");
+}
+document.getElementById('clickMe').addEventListener('click', onClick); //첫 번째 이벤트 연결
+document.getElementById('clickMe').addEventListener('click', onClick2); // 두 번째 이벤트 연결
+
+-콜백: 다른 함수가 실행을 끝낸 뒤 실행되는 함수
+﻿setTimeout( 함수, 시간)

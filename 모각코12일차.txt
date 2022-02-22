@@ -1,0 +1,14 @@
+[css 속성 변경법]
+hover는 마우스를 올려둔 상태, active는 마우스로 눌러 기능화한 상태.
+
+-배경화면과 텍스트 색상 바꾸기
+function check_text() {
+	var value = document.getElementById("console").value;
+	
+	if(value == "불꺼줘"){
+		(배경색 바꾸는 코드)
+	}
+	else{
+		console.log(value);
+	}
+} 

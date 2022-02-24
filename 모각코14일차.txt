@@ -1,0 +1,24 @@
+[CDN] COntent Delivery Network
+나의 인터넷 서버와 가까운 위치에 미리 파일을 복제하고,
+이를 빠르게 가져다 사용하는 방식
+즉, 파일을 쉽고 빠르게 다운받아 사용한다.
+ex) <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+-사이트
+https://cdnjs.com/
+https://www.npmjs.com/
+
+-예
+var app = document.getElementById("typed"); 
+      var typewriter = new Typewriter(app, {
+        loop: false,
+      });
+
+      typewriter
+        .typeString("코묘가 알아듣지 못한 것 같다.")
+        .pauseFor(1300)
+        .deleteAll()
+        .typeString("다시 한 번 말해보자.")
+        .pauseFor(2500)
+        .start();
+

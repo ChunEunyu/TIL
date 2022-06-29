@@ -10,8 +10,8 @@
 결과적으로 .. 
 1 2 3 4 5 6 7 8 9 10
 
-```
 
+```python 
 a = [-55, 4, 5, 2, -5, 9, 0, -15, 45]
 asc_a = [] # 오름차순 정렬을 저장하기 위한 새 리스트
 for i in range(len(a)): # 리스트 요소 개수만큼 반복
@@ -22,11 +22,10 @@ for i in range(len(a)): # 리스트 요소 개수만큼 반복
    a.remove(min_a) # 기존 배열에서 해당 요소 삭제 
    asc_a.append(min_a) # 새 배열에 가장 작은 수 추가
 print(asc_a) # 반복문을 끝낸 후 결과 출력
-
 ```
 
 함수로 만들기
-```
+```python
 def order(data):
    asc_a=[]
    for i in range(len(data)):
